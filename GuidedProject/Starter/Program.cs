@@ -265,7 +265,59 @@ do
 
         case "3":
             // Ensure animal ages and physical descriptions are complete
-            Console.WriteLine("Challenge Project - please check back soon to see progress.");
+
+            for (int i = 0; i < maxPets; i++)
+            {
+                string petID = ourAnimals[i, 0];
+                bool validEntry = false;
+                if (ourAnimals[i, 0] == "ID #: ")
+                {
+                    continue;
+                }
+                Console.WriteLine($"Pet {petID}");
+                if (ourAnimals[i, 2] == "Age: ?")
+                {
+                    do
+                    {
+                        int petAge;
+                        Console.WriteLine($"Enter an age for {petID}");
+                        readResult = Console.ReadLine();
+                        if (readResult != null) ;
+                        {
+                            animalAge = readResult;
+                            validEntry = int.TryParse(animalAge, out petAge);
+                        }
+                    } while (validEntry == false);
+                    ourAnimals[i, 2] = animalAge;
+                }
+                else
+                {
+                    Console.WriteLine($"{petID} has an age");
+                }
+                if (ourAnimals[i, 4] == "Physical description: tbd")
+                {
+                    animalPhysicalDescription = "tbd";
+                    do
+                    {
+                        Console.WriteLine($"Enter a physical description for {petID} (size, color, gender, weight, housebroken)");
+                        readResult = Console.ReadLine();
+                        if (readResult != null)
+                        {
+                            animalPhysicalDescription = readResult.ToLower();
+                            if (animalPhysicalDescription == "")
+                            {
+                                animalPhysicalDescription = "tbd";
+                            }
+                        }
+                    } while (animalPhysicalDescription == "tbd");
+                    ourAnimals[i, 4] = animalPhysicalDescription;
+                }
+                else
+                {
+                    Console.WriteLine($"{petID} has a physical description");
+                }
+            }
+            Console.WriteLine("All required data updated!");
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
