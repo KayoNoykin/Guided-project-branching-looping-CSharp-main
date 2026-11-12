@@ -282,7 +282,7 @@ do
                         int petAge;
                         Console.WriteLine($"Enter an age for {petID}");
                         readResult = Console.ReadLine();
-                        if (readResult != null) ;
+                        if (readResult != null)
                         {
                             animalAge = readResult;
                             validEntry = int.TryParse(animalAge, out petAge);
@@ -294,7 +294,7 @@ do
                 {
                     Console.WriteLine($"{petID} has an age");
                 }
-                if (ourAnimals[i, 4] == "Physical description: tbd")
+                if (ourAnimals[i, 4] == "Physical description: tbd" || ourAnimals[i, 4] == "Physical description: ")
                 {
                     animalPhysicalDescription = "tbd";
                     do
