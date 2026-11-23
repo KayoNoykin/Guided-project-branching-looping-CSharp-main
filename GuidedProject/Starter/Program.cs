@@ -241,6 +241,21 @@ do
                     }
                 } while (animalNickname == "");
 
+                //set a suggested donation for the pet - if blank will become default (45.00)
+                do
+                {
+                    Console.WriteLine("Set a suggested donation for the pet");
+                    readResult = Console.ReadLine();
+                    if (readResult != null)
+                    {
+                        if (!decimal.TryParse(readResult, out decimalDonation))
+                        {
+                            decimalDonation = 45.00m; //default donation of 45.00
+                        }
+                        validEntry = true;
+                    }
+                } while (validEntry == false);
+
                 // store the pet iformation in the ourAnimals array
                 ourAnimals[petCount, 0] = "ID #: " + animalID;
                 ourAnimals[petCount, 1] = "Species: " + animalSpecies;
@@ -248,6 +263,7 @@ do
                 ourAnimals[petCount, 3] = "Nickname: " + animalNickname;
                 ourAnimals[petCount, 4] = "Physical description: " + animalPhysicalDescription;
                 ourAnimals[petCount, 5] = "Personality: " + animalPersonalityDescription;
+                ourAnimals[petCount, 6] = $"Suggested Donation: {decimalDonation:C2}";
 
                 // increment petCount (the array is zero-based, so we increment the counter after adding to the array)
                 petCount = petCount + 1;
