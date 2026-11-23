@@ -412,7 +412,40 @@ do
 
         case "7":
             // Display all cats with a specified characteristic
-            Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
+            string catCharacteristic = "";
+
+            while (catCharacteristic == "")
+            {
+                // have the user enter physical characteristics to search for
+                Console.WriteLine($"\nEnter one desired cat characteristic to search for");
+                readResult = Console.ReadLine();
+                if (readResult != null)
+                {
+                    catCharacteristic = readResult.ToLower().Trim();
+                }
+            }
+            string catDescription = "";
+            bool noMatchesCat = true;
+
+            // loop through the ourAnimals array to search for matching animals
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 1].Contains("cat"))
+                {
+                    // search combined descriptions and report results
+                    catDescription = ourAnimals[i, 4] + "\n" + ourAnimals[i, 5];
+                    if (catDescription.Contains(catCharacteristic))
+                    {
+                        noMatchesCat = false;
+                        Console.WriteLine($"\nOur cat {ourAnimals[i, 3]} is a match!");
+                        Console.WriteLine(catDescription);
+                    }
+                }
+            }
+            if (noMatchesCat)
+            {
+                Console.WriteLine("None of our cats are a match found for: " + catCharacteristic);
+            }
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
@@ -444,7 +477,7 @@ do
                     if (dogDescription.Contains(dogCharacteristic))
                     {
                         noMatchesDog = false;
-                        Console.WriteLine($"\n Our dog {ourAnimals[i, 3]} is a match!");
+                        Console.WriteLine($"\nOur dog {ourAnimals[i, 3]} is a match!");
                         Console.WriteLine(dogDescription);
                     }
                 }
