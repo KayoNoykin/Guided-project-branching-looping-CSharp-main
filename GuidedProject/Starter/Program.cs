@@ -206,7 +206,7 @@ do
                     readResult = Console.ReadLine();
                     if (readResult != null)
                     {
-                        animalPersonalityDescription.ToLower();
+                        animalPersonalityDescription = readResult.ToLower();
                         if (animalPersonalityDescription == "")
                         {
                             animalPersonalityDescription = "tbd";
